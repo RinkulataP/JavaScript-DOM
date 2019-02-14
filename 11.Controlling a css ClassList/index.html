@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Element classList property</title>
+    <style>
+        h1{
+            font-size:2.0rem;
+        }
+        p, li{
+            color: rgb(98, 0, 128);
+        }
+        code{}
+        .a{
+            color: hsl(167, 68%, 36%);
+            font-size:2.0rem;
+            border: 1px solid red;
+        }
+        .b{
+            color: #bada55;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Element.classList property</h1>
+    <ul>
+        <li><code>Element.classList property.add()</code></li>
+        <li><code>Element.classList property.remove()</code></li>
+        <li><code>Element.classList property.toggle()</code></li>
+    </ul>
+    <p class="c d e f">shggewdhthertyu</p>
+    <p>shggewdhthertyu</p>
+    <p>shggewdhthertyu</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let paras = document.querySelectorAll('p');
+            for(let p in paras){
+                paras[p].addEventListener('click', clicked);
+                paras[p].addEventListener('mouseover', addA);
+                paras[p].addEventListener('mouseout', removeA);
+            }
+        });
+        function clicked(ev){
+            let p = ev.currentTarget; // our paragraph that was clicked	
+            p.classList.toggle("b");
+        }
+        function addA(ev){
+            let p = ev.currentTarget; //our paragraph that was mouse over	
+            p.classList.add("a");
+        }
+        function removeA(ev){
+            let p = ev.currentTarget; // our paragraph was mouse out	
+            p.classList.remove("a");
+        }
+    </script>
+</body>
+</html>
