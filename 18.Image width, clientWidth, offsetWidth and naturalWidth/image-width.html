@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Widths</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        img{
+            width: 500px;  /*   after loading used for rendering */
+            height: auto;
+            padding: 20px;
+            background-color: #ddd;
+            border: 5px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click here to load another image</h1>
+    <main>
+        <p><img id="img" src="http://picsum.photos/400/400/?random" alt="random image" /></p>
+        <!-- 
+        height and width inside <img> will create placeholder area
+        Sample URL:  http://picsum.photos/400/400/?random 
+        -->
+    </main>
+    <script>
+        //image widths in JavaScript
+        // width, clientWidth, offsetWidth, naturalWidth
+        let img;
+        
+        document.addEventListener('DOMContentLoaded', ()=>{
+            img = document.getElementById('img');
+            img.addEventListener('load', (ev)=>{
+                //this runs when a image is loaded
+                console.log('width', img.width);
+                console.log('client width', img.clientWidth);
+                console.log('offset width', img.offsetWidth);
+                console.log('naturalWidth', img.naturalWidth);
+            });
+            img.addEventListener('error', (err)=>{
+                //this runs if there is an error loading the image
+                
+            });
+            document.querySelector('h1').addEventListener('click', (ev)=>{
+                let num = Math.floor(Math.random() * 400) + 100; //100 and 500
+                console.log('num', num);
+                img.src = `http://picsum.photos/${num}/${num}/?random`;
+            })
+        })
+    </script>
+</body>
+</html>
